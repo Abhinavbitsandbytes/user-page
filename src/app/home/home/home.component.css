@@ -1,5 +1,31 @@
-
-
-   
-
-    
+.home-header-container {
+  margin-top: 24px !important;
+  margin-bottom: 24px !important;
+}
+.profile-container {
+  text-align: end;
+}
+.profile-icon {
+  font-size: 32px;
+  cursor: pointer;
+}
+.range-form {
+  margin-bottom: 36px;
+}
+.text-center {
+  text-align: center;
+}
+.cards-container {
+  padding: 0px;
+  margin: 0px;
+}
+.card-style {
+  margin-bottom: 16px;
+}
+.card-image {
+  width: 225px !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.title {
+  font-weight: bold;
+}

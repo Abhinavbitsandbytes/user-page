@@ -15,19 +15,15 @@ export class LoginComponent implements OnInit {
       id: [''],
       password: [''],
     });
-   }
- 
+  }
   ngOnInit() {
   }
-  login(){
-    if(this.loginForm.get('id').value==='admin' && this.loginForm.get('password').value==='admin123'){
-      
+  login() {
+    if (this.loginForm.get('id').value === 'admin' && this.loginForm.get('password').value === 'admin123') {
     }
-    else{
+    else {
       alert('Please enter correct credentials')
       this._router.navigate(['/home'])
     }
-    
   }
-
 }

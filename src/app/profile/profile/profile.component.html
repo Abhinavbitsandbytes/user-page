@@ -1,4 +1,4 @@
-<div style="text-align: center;margin-top: 12px;">
+<div class="profile-image-container">
 <label class="hoverable" for="fileInput">
   <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'"> 
   <div class="hover-text">Choose file</div>
@@ -8,22 +8,22 @@
 <input id="fileInput" type='file' (change)="onSelectFile($event)">
 </div>
 
-    <div *ngIf="!isFormEdited" class="row" style="margin: 0px;padding-top:24px;padding-bottom: 24px;">
+    <div *ngIf="!isFormEdited" class="row card-container">
       <div class="col-md-12">
 
     <mat-card>
       <div>
-    <span style="font-weight: bold;">Name: </span>
-  <span style="overflow-wrap: break-word">{{profileForm.get('name').value}}</span>
+    <span class="title">Name: </span>
+  <span class="detail">{{profileForm.get('name').value}}</span>
 </div>
 
 <div>
-  <span style="font-weight: bold;">Number: </span>
-<span style="overflow-wrap: break-word">{{profileForm.get('mobile').value}}</span>
+  <span class="title">Number: </span>
+<span class="detail">{{profileForm.get('mobile').value}}</span>
 </div>
 <div>
-  <span style="font-weight: bold;">Email: </span>
-<span style="overflow-wrap: break-word">{{profileForm.get('email').value}}</span>
+  <span class="title">Email: </span>
+<span class="detail">{{profileForm.get('email').value}}</span>
 </div>
 </mat-card>
 </div>
@@ -56,9 +56,8 @@
     </div>
   </div>
 </div>
-  
 </form>
 </div>
-<div style="text-align: center;">
+<div class="action">
   <button (click)="login()" class="btn btn-warning">{{isFormEdited ? 'SAVE':'EDIT DETAILS'}}</button>
 </div>

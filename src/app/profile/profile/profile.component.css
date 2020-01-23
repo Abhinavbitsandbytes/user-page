@@ -1,5 +1,8 @@
 
-  
+  .profile-image-container{
+    text-align: center;
+    margin-top: 12px;
+  }
   img {
     height: 100%;
     width: 100%;
@@ -42,4 +45,18 @@
   
   #fileInput{
     display: none;
+  }
+  .title{
+    font-weight: bold;
+  }
+  .detail{
+    overflow-wrap: break-word;
+  }
+  .card-container{
+    margin: 0px;
+    padding-top:24px;
+    padding-bottom: 24px;
+  }
+  .action{
+    text-align: center;
   }
