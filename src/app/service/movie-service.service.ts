@@ -4,12 +4,12 @@ const baseUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=4b10cf2f8e6e
 @Injectable({
   providedIn: 'root'
 })
-export class MedicineDataService {
+export class MovieServiceService {
 
   constructor(private http: HttpClient) { }
   
 
-  getMedicineList()   {
+  getMovieList()   {
  return this.http.get(baseUrl)
 
 }

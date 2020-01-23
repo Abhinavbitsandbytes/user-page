@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  isCredentailTrue:boolean
   constructor(private _formBuilder: FormBuilder, private _router: Router) {
     this.loginForm = this._formBuilder.group({
       id: [''],
@@ -22,10 +21,12 @@ export class LoginComponent implements OnInit {
   }
   login(){
     if(this.loginForm.get('id').value==='admin' && this.loginForm.get('password').value==='admin123'){
-      this._router.navigate(['/home'])
-      this.isCredentailTrue=true
+      
     }
-    this.isCredentailTrue=false
+    else{
+      alert('Please enter correct credentials')
+      this._router.navigate(['/home'])
+    }
     
   }
 

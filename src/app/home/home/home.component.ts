@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MedicineDataService } from '../../service/medicine-data.service';
+import { MovieServiceService } from '../../service/movie-service.service';
 import { Router } from "@angular/router";
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -10,17 +10,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  medicineList = []
-  event_data: any;
+  movie_data: any;
   private _searchTerm: string
-  public filteredEvents: any
+  public filteredData: any
   rangeForm: FormGroup;
 
-  constructor(private _medicineService: MedicineDataService, private _router: Router, private _formBuilder: FormBuilder) { 
-  this._medicineService.getMedicineList().subscribe(data => {
-    this.event_data = data['results'];
-    this.filteredEvents = data['results']
-    console.log(data)
+  constructor(private _movieServiceService: MovieServiceService, private _router: Router, private _formBuilder: FormBuilder) { 
+  this._movieServiceService.getMovieList().subscribe(data => {
+    this.movie_data = data['results'];
+    this.filteredData = data['results']
   })
   this.rangeForm = this._formBuilder.group({
     startDate: [''],
@@ -35,48 +33,27 @@ export class HomeComponent implements OnInit {
   }
   set searchTerm(value: string) {
     this._searchTerm = value;
-    this.filteredEvents = this.filterEvents(value)
+    this.filteredData = this.filterEvents(value)
   }
   filterEvents(searchString: string) {
-    if (this.event_data) {
-      return this.event_data.filter(data =>
+    if (this.movie_data) {
+      return this.movie_data.filter(data =>
         data.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1)
 
     }
   }
   setRange() {
+    if(this.rangeForm.valid){
     let startDate = new Date(this.rangeForm.get('startDate').value);
     let endDate = new Date(this.rangeForm.get('endDate').value);
-    this.filteredEvents = this.event_data.filter(data => {
+    this.filteredData = this.movie_data.filter(data => {
       data['release_date'] = new Date(data['release_date']);
       return (data['release_date'] > startDate && data['release_date'] < endDate)
     });
+  }
     
   }
-  getErrrorMessage(fieldName) {
 
-    if (fieldName == 'medName') {
-
-      return "Please enter your name"
-
-    }
-    else if (fieldName == 'medDescription') {
-
-      return "Please enter Description"
-
-    }
-    else if (fieldName == 'quantity') {
-
-      return "Please enter Qantity"
-
-    }
-    else if (fieldName == 'price') {
-
-      return "Please enter Price"
-
-    }
-
-  }
   handleProfile(){
     this._router.navigate(['/profile'])
   }

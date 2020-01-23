@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MedicineListingComponent } from './pages-components/medicine-listing/medicine-listing.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { MatFormFieldModule, MatInputModule, MatSelectModule, MatDialogModule, MatIconModule, MatDatepickerModule } from '@angular/material';
 import { DateFormat } from './date-format';
@@ -14,7 +13,6 @@ import { SharedModule} from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    MedicineListingComponent,
   ],
   imports: [
     HttpClientModule,

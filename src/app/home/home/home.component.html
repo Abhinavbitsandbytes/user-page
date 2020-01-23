@@ -1,22 +1,21 @@
 
-<div *ngIf="!filteredEvents && startServerMessage" class="white-color">Please start json server using command <span class="heading tomato_color" > json-server --watch db.json</span>  </div>
-<div class="container-fluid" style="margin-top: 24px;margin-bottom: 24px;" *ngIf="filteredEvents">
+<div class="container-fluid" style="margin-top: 24px;margin-bottom: 24px;" *ngIf="filteredData">
   <div class="row search_box" >
-    <div class="col-md-6 col-12">
+    <div class="col-md-5 col-10">
     <div class="form-group">
         <input type="text" class="form-control" placeholder="SEARCH MOVIES BY TITLE"  [(ngModel)]="searchTerm">
       </div>
       </div>
-      <div class="col-md-5 col-12" style="text-align: end;">
-        <i (click)="handleProfile()" class="fas fa-user"></i>
+      <div class="col-md-7 col-2" style="text-align: end;">
+        <i style="font-size:32px;cursor: pointer;" (click)="handleProfile()" class="fas fa-user"></i>
           </div>
     </div>
   <div class="row">
     <div class="col-md-12 card_content">
       <ng-container >
         <div class="row">
-          <ng-container *ngIf="filteredEvents.length>0; else no_event">
-          <div class="col-md-3 col-6 col-sm-3 col-lg-2 col-xl-2" *ngFor=" let event of filteredEvents">
+          <ng-container *ngIf="filteredData.length>0; else no_event">
+          <div class="col-md-3 col-6 col-sm-3 col-lg-2 col-xl-2" *ngFor=" let event of filteredData">
           </div>
         </ng-container>
         <ng-template #no_event><span class="white-color"> No results found! </span></ng-template>
@@ -35,7 +34,7 @@
                   name="startDate" formControlName="startDate" required>
                   <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
                   <mat-datepicker #startDate></mat-datepicker>
-                  <mat-error *ngIf="rangeForm.get('startDate').errors">{{getErrrorMessage('medName')}} </mat-error>
+                  <mat-error>Required </mat-error>
           </mat-form-field>
       </div>
       <div class="col-md-3">
@@ -45,7 +44,7 @@
               name="endDate" formControlName="endDate" required >
               <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
               <mat-datepicker #endDate></mat-datepicker>
-              <mat-error *ngIf="rangeForm.get('endDate').errors">{{getErrrorMessage('medName')}} </mat-error>
+              <mat-error>Required  </mat-error>
       </mat-form-field>
       </div>
       <div style="text-align: center;" class="col-md-3 mt-md-0 text-md-left">
@@ -54,8 +53,8 @@
   </div>
 </form>
 </div>
-<div class="row" *ngIf="filteredEvents" style="padding: 0px;margin:0px;">
-  <div class="col-md-3 col-sm-12 col-12" style="text-align: center;" *ngFor=" let movie of filteredEvents">
+<div class="row" *ngIf="filteredData" style="padding: 0px;margin:0px;">
+  <div class="col-md-3 col-sm-12 col-12" style="text-align: center;" *ngFor=" let movie of filteredData">
     <div class="movie-card" style="margin-bottom: 16px;">
       <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" 
       style="width:225px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);">
