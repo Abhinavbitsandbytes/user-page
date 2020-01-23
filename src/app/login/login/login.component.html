@@ -1,0 +1,29 @@
+<div class="container" style="margin-top: 100px;">
+  <form [formGroup]="loginForm" name="loginForm">
+    <div class="row">
+      <div class="col-md-3 offset-md-2">
+        <mat-form-field>
+          <mat-label>User Id</mat-label>
+          <input matInput placeholder="User Id" name="id" formControlName="id" required>
+          <mat-error> Invalid User Id </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" name="password" formControlName="password" required
+            [type]="hide ? 'password' : 'text'">
+          <i mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </i>
+          <mat-error>Invalid Password </mat-error>
+        </mat-form-field>
+      </div>
+      <div style="text-align: center;" class="col-md-3 mt-md-0 text-md-left">
+        <button (click)="login()" class="btn btn-warning">Login</button>
+      </div>
+      <div *ngIf="!isCredentailTrue && formSubmitted">Please enter correct credential</div>
+    </div>
+  </form>
+</div>

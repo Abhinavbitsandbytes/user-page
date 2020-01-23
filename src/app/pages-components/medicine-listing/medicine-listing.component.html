@@ -1,0 +1,71 @@
+
+<div *ngIf="!filteredEvents && startServerMessage" class="white-color">Please start json server using command <span class="heading tomato_color" > json-server --watch db.json</span>  </div>
+
+<div class="container-fluid" *ngIf="filteredEvents">
+  <div class="row search_box" >
+    <div class="col-md-6 col-12">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="SEARCH MEDICINES"  [(ngModel)]="searchTerm">
+      </div>
+      </div>
+    </div>
+  <div class="row">
+
+    <div class="col-md-12 card_content">
+      <ng-container >
+        <div class="row">
+          <ng-container *ngIf="filteredEvents.length>0; else no_event">
+          <div class="col-md-3 col-6 col-sm-3 col-lg-2 col-xl-2" *ngFor=" let event of filteredEvents">
+              <!-- <div *ngIf="event.id < 21" (click)="quickAdd(event.id)"  type="button " class="quick_add_button"> {{event.name}}</div> -->
+
+          </div>
+        </ng-container>
+        <ng-template #no_event><span class="white-color"> No results found! </span></ng-template>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+</div>
+<div class="container">
+  <form [formGroup]="rangeForm" name="rangeForm">
+  <div class="row">
+      <div class="col-md-3 offset-md-2">
+<mat-form-field>
+              <mat-label>From</mat-label>
+              <input  matInput placeholder="From" [matDatepicker]="startDate"
+                  name="startDate" formControlName="startDate" required>
+                  <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                  <mat-datepicker #startDate></mat-datepicker>
+                  <mat-error *ngIf="rangeForm.get('startDate').errors">{{getErrrorMessage('medName')}} </mat-error>
+          </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <mat-form-field>
+          <mat-label>To</mat-label>
+          <input  matInput placeholder="To" [matDatepicker]="endDate"
+              name="endDate" formControlName="endDate" required >
+              <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+              <mat-datepicker #endDate></mat-datepicker>
+              <mat-error *ngIf="rangeForm.get('endDate').errors">{{getErrrorMessage('medName')}} </mat-error>
+      </mat-form-field>
+      </div>
+      <div style="text-align: center;" class="col-md-3 mt-md-0 text-md-left">
+<button class="btn btn-warning" (click)="setRange()">See Results</button>
+      </div>
+  </div>
+</form>
+</div>
+<div class="row" *ngIf="filteredEvents">
+  <div class="col-md-2 col-12" *ngFor=" let movie of filteredEvents">
+    <div class="movie-card">
+      <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" 
+      style="height:225px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);">
+
+      <p class="movie-title">
+        {{movie.title}}
+      </p>
+      <p>Date: {{movie.release_date}}</p>
+    </div>
+  </div>
+</div>
