@@ -12,10 +12,26 @@ export class HomeComponent implements OnInit {
   private _searchTerm: string
   public filteredData: any
   rangeForm: FormGroup;
+  movies_title: [];
+  imdb_ratings = [];
+  public barChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true,
+  };
+  public barChartType = 'bar';
+  public barChartLegend = true;
+  public barChartData = [
+    {
+      data: this.imdb_ratings, label: 'Rating', backgroundColor: 'rgba(79, 255, 195, 1)', hoverBackgroundColor: 'rgba(79, 255, 195, 1)'
+    },
+  ];
   constructor(private _movieServiceService: MovieServiceService, private _router: Router, private _formBuilder: FormBuilder) {
     this._movieServiceService.getMovieList().subscribe(data => {
       this.movie_data = data['results'];
       this.filteredData = data['results']
+      this.movies_title = this.movie_data.map(content => content.title);
+      this.imdb_ratings = this.movie_data.map(content => content.vote_average);
+      this.barChartData[0].data = this.imdb_ratings;
     })
     this.rangeForm = this._formBuilder.group({
       startDate: [''],
