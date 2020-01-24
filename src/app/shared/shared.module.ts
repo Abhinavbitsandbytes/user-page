@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import { LazyLoadImageModule} from 'ng-lazyload-image';
 import {
 	MatFormFieldModule,
 	MatBottomSheetModule,
@@ -57,7 +57,8 @@ import {
 		MatSelectModule,
 		MatAutocompleteModule,
         MatIconModule,
-        MatDatepickerModule,
+		MatDatepickerModule,
+		LazyLoadImageModule,
 	],
 	exports: [
 		MatFormFieldModule,
@@ -85,7 +86,8 @@ import {
 		MatIconModule,
 		ReactiveFormsModule,
         FormsModule,
-        MatDatepickerModule
+		MatDatepickerModule,
+		LazyLoadImageModule
 	],
 	providers: [
 
