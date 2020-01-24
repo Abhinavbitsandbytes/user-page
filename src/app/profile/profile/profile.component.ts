@@ -18,8 +18,9 @@ export class ProfileComponent implements OnInit {
     });
    }
   ngOnInit() {
+    this.getFromLocalStorage()
+    this.url=(localStorage.getItem("img"))?(localStorage.getItem("img")) : "https://www.w3schools.com/howto/img_avatar.png"
   }
- 
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
@@ -28,11 +29,31 @@ export class ProfileComponent implements OnInit {
 
       reader.onload = (event) => { // called once readAsDataURL is completed
         this.url = event.target['result'];
+        localStorage.setItem('img', this.url)
       }
     }
   }
   login(){
     if(this.profileForm.valid)
     this.isFormEdited=!this.isFormEdited
+  }
+  makeDataForLocalStorage(form) {
+    const dataForLocalStorage = {};
+    for (const key in form.value) {
+      dataForLocalStorage[key] = form.get(key).value;
+    }
+    return dataForLocalStorage;
+  }
+  setInLocalStorage() {
+    const profileForm = this.makeDataForLocalStorage(this.profileForm);
+    localStorage.setItem('profileFormData', JSON.stringify(profileForm));
+
+  }
+  getFromLocalStorage() {
+    if (localStorage.getItem('profileFormData')) {
+      const data = JSON.parse(localStorage.getItem('profileFormData'));
+      this.profileForm.patchValue(data);
+    }
+
   }
 }

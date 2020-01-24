@@ -36,21 +36,21 @@
     <div class="col-md-4">
       <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Name" name="name" formControlName="name" required>
+        <input (change)="setInLocalStorage()" matInput placeholder="Name" name="name" formControlName="name" required>
         <mat-error>please provide valid name </mat-error>
       </mat-form-field>
     </div>
     <div class="col-md-4">
       <mat-form-field>
         <mat-label>Mobile Number</mat-label>
-        <input matInput placeholder="Mobile Number" type="email" name="mobile" formControlName="mobile" type="number" required>
+        <input (change)="setInLocalStorage()" matInput placeholder="Mobile Number" type="email" name="mobile" formControlName="mobile" type="number" required>
         <mat-error>please provide valid mobile number </mat-error>
       </mat-form-field>
     </div>
     <div class="col-md-4">
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" name="email" formControlName="email" required>
+        <input (change)="setInLocalStorage()" matInput placeholder="Email" name="email" formControlName="email" required>
         <mat-error>please provide valid email </mat-error>
       </mat-form-field>
     </div>
