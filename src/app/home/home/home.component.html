@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="col-md-7 col-2 profile-container">
-      <i  (click)="handleProfile()" class="fas fa-user profile-icon"></i>
+      <i (click)="handleProfile()" class="fas fa-user profile-icon"></i>
     </div>
   </div>
   <div class="row">
@@ -62,9 +62,8 @@
     </div>
   </div>
 </div>
-
-
 <div>
+  <div class="graph-heading">Latest 20 movies IMDB Rating</div>
   <div style="display: block">
     <canvas class="wrapper" baseChart [datasets]="barChartData" [labels]="movies_title" [options]="barChartOptions"
       [legend]="barChartLegend" [chartType]="barChartType"></canvas>

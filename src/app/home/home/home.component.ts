@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieServiceService } from '../../service/movie-service.service';
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup } from '@angular/forms';
+const imageBaseUrl="https://image.tmdb.org/t/p/w500"
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -58,7 +59,7 @@ export class HomeComponent implements OnInit {
     if (this.rangeForm.valid) {
       let startDate = new Date(this.rangeForm.get('startDate').value);
       let endDate = new Date(this.rangeForm.get('endDate').value);
-      this.filteredData = this.movie_data.filter(data => {
+      this.filteredData = this.filteredData.filter(data => {
         data['release_date'] = new Date(data['release_date']);
         return (data['release_date'] > startDate && data['release_date'] < endDate)
       });
@@ -67,9 +68,7 @@ export class HomeComponent implements OnInit {
   handleProfile() {
     this._router.navigate(['/profile'])
   }
-  getImage(endUrl){
-
-   return ( "https://image.tmdb.org/t/p/w500"+endUrl)
-
-}
+  getImage(endUrl) {
+    return (imageBaseUrl + endUrl)
+  }
 }

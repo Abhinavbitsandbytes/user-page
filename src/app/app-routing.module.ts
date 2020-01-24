@@ -18,6 +18,10 @@ const routes: Routes = [
   loadChildren: "./profile/profile.module#ProfileModule",
   canActivate: [AuthGuard]
 },
+{
+  path: "**",
+  redirectTo: ""
+}
 ];
 
 @NgModule({
