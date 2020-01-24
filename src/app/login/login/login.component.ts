@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  hide:boolean=true
   constructor(private _formBuilder: FormBuilder, private _router: Router) {
     this.loginForm = this._formBuilder.group({
       id: [''],
@@ -26,7 +27,6 @@ export class LoginComponent implements OnInit {
     }
     else {
       alert('Please enter correct credentials')
-      this._router.navigate(['/home'])
     }
   }
 }

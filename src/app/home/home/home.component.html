@@ -54,7 +54,7 @@
 <div class="row cards-container" *ngIf="filteredData">
   <div class="col-md-3 col-sm-12 col-12 text-center" *ngFor=" let movie of filteredData">
     <div class="card-style">
-      <img class="card-image" alt="{{movie.title}}" lazyLoad="https://image.tmdb.org/t/p/w500{{movie.poster_path}}">
+      <img class="card-image" alt="{{movie.title}}" [lazyLoad]="getImage(movie.poster_path)">
       <div class="title">
         {{movie.title}}
       </div>

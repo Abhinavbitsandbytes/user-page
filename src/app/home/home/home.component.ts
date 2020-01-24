@@ -67,5 +67,9 @@ export class HomeComponent implements OnInit {
   handleProfile() {
     this._router.navigate(['/profile'])
   }
+  getImage(endUrl){
 
+   return ( "https://image.tmdb.org/t/p/w500"+endUrl)
+
+}
 }
