@@ -17,9 +17,12 @@ export class LoginComponent implements OnInit {
     });
   }
   ngOnInit() {
+    localStorage.clear();
   }
   login() {
     if (this.loginForm.get('id').value === 'admin' && this.loginForm.get('password').value === 'admin123') {
+      localStorage.setItem("isLoggedIn","true")
+      this._router.navigate(['/home'])
     }
     else {
       alert('Please enter correct credentials')
