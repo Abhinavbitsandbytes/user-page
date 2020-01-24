@@ -1,62 +1,61 @@
 <div class="profile-image-container">
-<label class="hoverable" for="fileInput">
-  <img [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'"> 
-  <div class="hover-text">Choose file</div>
-  <div class="background"></div>
-</label>
-<br/>
-<input id="fileInput" type='file' (change)="onSelectFile($event)">
+  <label class="hoverable" for="fileInput">
+    <img [src]="url">
+    <div class="hover-text">Choose file</div>
+    <div class="background"></div>
+  </label>
+  <br />
+  <input id="fileInput" type='file' (change)="onSelectFile($event)">
 </div>
-
-    <div *ngIf="!isFormEdited" class="row card-container">
-      <div class="col-md-12">
-
+<div *ngIf="!isFormEdited" class="row card-container">
+  <div class="col-md-12">
     <mat-card>
       <div>
-    <span class="title">Name: </span>
-  <span class="detail">{{profileForm.get('name').value}}</span>
-</div>
-
-<div>
-  <span class="title">Number: </span>
-<span class="detail">{{profileForm.get('mobile').value}}</span>
-</div>
-<div>
-  <span class="title">Email: </span>
-<span class="detail">{{profileForm.get('email').value}}</span>
-</div>
-</mat-card>
-</div>
-</div>
-
-<div *ngIf="isFormEdited">
-<form [formGroup]="profileForm" name="profileForm">
-  <div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input (change)="setInLocalStorage()" matInput placeholder="Name" name="name" formControlName="name" required>
-        <mat-error>please provide valid name </mat-error>
-      </mat-form-field>
-    </div>
-    <div class="col-md-4">
-      <mat-form-field>
-        <mat-label>Mobile Number</mat-label>
-        <input (change)="setInLocalStorage()" matInput placeholder="Mobile Number" type="email" name="mobile" formControlName="mobile" type="number" required>
-        <mat-error>please provide valid mobile number </mat-error>
-      </mat-form-field>
-    </div>
-    <div class="col-md-4">
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input (change)="setInLocalStorage()" matInput placeholder="Email" name="email" formControlName="email" required>
-        <mat-error>please provide valid email </mat-error>
-      </mat-form-field>
-    </div>
+        <span class="title">Name: </span>
+        <span class="detail">{{profileForm.get('name').value}}</span>
+      </div>
+      <div>
+        <span class="title">Number: </span>
+        <span class="detail">{{profileForm.get('mobile').value}}</span>
+      </div>
+      <div>
+        <span class="title">Email: </span>
+        <span class="detail">{{profileForm.get('email').value}}</span>
+      </div>
+    </mat-card>
   </div>
 </div>
-</form>
+<div *ngIf="isFormEdited">
+  <form [formGroup]="profileForm" name="profileForm">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input (change)="setInLocalStorage()" matInput placeholder="Name" name="name" formControlName="name"
+              required>
+            <mat-error>please provide valid name </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Mobile Number</mat-label>
+            <input (change)="setInLocalStorage()" matInput placeholder="Mobile Number" type="email" name="mobile"
+              formControlName="mobile" type="number" required>
+            <mat-error>please provide valid mobile number </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input (change)="setInLocalStorage()" matInput placeholder="Email" name="email" formControlName="email"
+              required>
+            <mat-error>please provide valid email </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 <div class="action">
   <button (click)="login()" class="btn btn-warning">{{isFormEdited ? 'SAVE':'EDIT DETAILS'}}</button>

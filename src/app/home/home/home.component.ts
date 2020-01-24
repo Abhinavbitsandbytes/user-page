@@ -43,7 +43,6 @@ export class HomeComponent implements OnInit {
   }
   get searchTerm(): string {
     return this._searchTerm;
-
   }
   set searchTerm(value: string) {
     this._searchTerm = value;

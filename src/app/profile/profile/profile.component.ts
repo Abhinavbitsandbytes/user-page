@@ -25,9 +25,9 @@ export class ProfileComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
 
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
+      reader.readAsDataURL(event.target.files[0]);
 
-      reader.onload = (event) => { // called once readAsDataURL is completed
+      reader.onload = (event) => { 
         this.url = event.target['result'];
         localStorage.setItem('img', this.url)
       }
@@ -47,13 +47,11 @@ export class ProfileComponent implements OnInit {
   setInLocalStorage() {
     const profileForm = this.makeDataForLocalStorage(this.profileForm);
     localStorage.setItem('profileFormData', JSON.stringify(profileForm));
-
   }
   getFromLocalStorage() {
     if (localStorage.getItem('profileFormData')) {
       const data = JSON.parse(localStorage.getItem('profileFormData'));
       this.profileForm.patchValue(data);
     }
-
   }
 }
